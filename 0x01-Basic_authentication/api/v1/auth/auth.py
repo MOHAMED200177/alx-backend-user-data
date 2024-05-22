@@ -13,8 +13,7 @@ class Auth:
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
 
-        l_path = len(path)
-        if l_path == 0:
+        if len(path) == 0:
             return True
 
         slash_path = True if path[- 1] == '/' else False
