@@ -19,16 +19,15 @@ class Auth:
 
         slash_path = True if path[- 1] == '/' else False
 
-        tmp_path = path
         if not slash_path:
-            tmp_path += '/'
+            path += '/'
 
         for exc in excluded_paths:
             if len(exc) == 0:
                 continue
 
             if exc[- 1] != '*':
-                if tmp_path == exc:
+                if path == exc:
                     return False
             if exc[-1] != '/':
                 exc += '/'
