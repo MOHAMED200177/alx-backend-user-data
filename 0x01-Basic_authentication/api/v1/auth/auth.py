@@ -24,7 +24,8 @@ class Auth:
             tmp_path += '/'
 
         for exc in excluded_paths:
-            if len(exc) == 0:
+            l_exc = len(exc)
+            if l_exc == 0:
                 continue
 
             if exc[- 1] != '*':
@@ -32,9 +33,6 @@ class Auth:
                     return False
             if exc[-1] != '/':
                 exc += '/'
-            if path == exc:
-                return False
-
         return True
 
     def authorization_header(self, request=None) -> str:
