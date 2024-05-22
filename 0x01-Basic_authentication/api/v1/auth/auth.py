@@ -14,24 +14,7 @@ class Auth:
             return True
 
         l_path = len(path)
-        if l_path == 0:
-            return True
-
-        slash_path = True if path[- 1] == '/' else False
-
-        tmp_path = path
-        if slash_path == False:
-            tmp_path += '/'
-
-        for exc in excluded_paths:
-            l_exc = len(exc)
-            if l_exc == 0:
-                continue
-
-            if exc[- 1] != '*':
-                if tmp_path == exc:
-                    return False
-
+      
 
         return True
 
