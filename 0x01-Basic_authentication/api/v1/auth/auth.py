@@ -24,8 +24,7 @@ class Auth:
             tmp_path += '/'
 
         for exc in excluded_paths:
-            l_exc = len(exc)
-            if l_exc == 0:
+            if len(exc) == 0:
                 continue
 
             if exc[- 1] != '*':
