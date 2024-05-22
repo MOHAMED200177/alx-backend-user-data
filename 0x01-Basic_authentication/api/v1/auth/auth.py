@@ -27,6 +27,10 @@ class Auth:
             l_exc = len(exc)
             if l_exc == 0:
                 continue
+
+            if exc[- 1] != '*':
+                if tmp_path == exc:
+                    return False
             if exc[-1] != '/':
                 exc += '/'
             if path == exc:
