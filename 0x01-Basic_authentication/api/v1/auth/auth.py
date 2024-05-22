@@ -33,6 +33,9 @@ class Auth:
                     return False
             if exc[-1] != '/':
                 exc += '/'
+            if path == exc:
+                return False
+
         return True
 
     def authorization_header(self, request=None) -> str:
