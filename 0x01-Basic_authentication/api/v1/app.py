@@ -42,7 +42,12 @@ def forbidden_error(error) -> str:
     """
     return jsonify({"error": "Forbidden"}), 403
 
-
+@app.before_request
+def before_request() -> str:
+    if auth is None:
+        return
+    
+    
 @app.before_request
 def before_request() -> str:
     """ Before Request Handler
@@ -55,7 +60,7 @@ def before_request() -> str:
                       '/api/v1/unauthorized/',
                       '/api/v1/forbidden/']
 
-    if not auth.require_auth(request.path, excluded_paths):
+    if auth.require_auth(request.path, excluded_paths) is False:
         return
 
     if auth.authorization_header(request) is None:
