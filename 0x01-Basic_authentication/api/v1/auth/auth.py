@@ -33,8 +33,6 @@ class Auth:
                     return False
             if exc[-1] != '/':
                 exc += '/'
-            if path == exc:
-                return False
 
         return True
 
