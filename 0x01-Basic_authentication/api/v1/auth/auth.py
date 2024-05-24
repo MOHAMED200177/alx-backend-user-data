@@ -14,6 +14,8 @@ class Auth:
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
 
+        if len(path) == 0:
+            return True
 
         # Ensure path ends with a slash for comparison consistency
         if not path.endswith('/'):
