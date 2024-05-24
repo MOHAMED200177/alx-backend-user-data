@@ -26,11 +26,12 @@ class Auth:
             if len(exc) == 0:
                 continue
 
-            if exc[- 1] != '*':
-                if path[0] == exc[:-1]:
+            if exc.endswith('*'):
+                if path.startswith(exc[:-1]):
                     return False
             else:
-                if exc[-1] != '/':
+                # Ensure excluded path ends with a slash for comparison consistency
+                if not exc.endswith('/'):
                     exc += '/'
                 if path == exc:
                     return False
