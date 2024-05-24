@@ -14,18 +14,16 @@ class Auth:
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
 
-        if len(path) == 0:
-            return True
 
-        slash_path = True if path[- 1] == '/' else False
-
-        if not slash_path:
+        # Ensure path ends with a slash for comparison consistency
+        if not path.endswith('/'):
             path += '/'
 
         for exc in excluded_paths:
             if len(exc) == 0:
                 continue
 
+            # If the excluded path ends with '*', check if path starts with the base of the excluded path
             if exc.endswith('*'):
                 if path.startswith(exc[:-1]):
                     return False
