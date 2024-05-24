@@ -27,10 +27,13 @@ class Auth:
                 continue
 
             if exc[- 1] != '*':
+                if path[0] == exc[:-1]:
+                    return False
+            else:
+                if exc[-1] != '/':
+                    exc += '/'
                 if path == exc:
                     return False
-            if exc[-1] != '/':
-                exc += '/'
 
         return True
 

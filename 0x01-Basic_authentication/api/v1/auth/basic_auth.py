@@ -83,7 +83,7 @@ class BasicAuth(Auth):
         except Exception:
             return None
 
-        for user in found_users:
+        for user in found_users:            
             if user.is_valid_password(user_pwd):
                 return user
 
@@ -92,6 +92,7 @@ class BasicAuth(Auth):
     def current_user(self, request=None) -> TypeVar('User'):
         """ overloads Auth and retrieves the User instance for a request """
         auth_header = self.authorization_header(request)
+        
 
         if not auth_header:
             return None
